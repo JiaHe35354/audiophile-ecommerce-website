@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #191919;
+    --bg-light: #f1f1f1;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --color-primary: #d87d4a;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+
+  html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Manrope", sans-serif;
+    font-size: 1.5rem;
+  }
+
+  .heading-primary {
+    font-size: 5.6rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .heading-secondary {
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2;
+    letter-spacing: 1.43px;
+  }
+
+  .heading-tertiary {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .btn {
+    padding: 1.5rem 3rem;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+}
