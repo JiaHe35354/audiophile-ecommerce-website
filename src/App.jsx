@@ -1,33 +1,34 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import RootLayout from "./pages/Root";
+import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
 import CategoryPage from "./pages/Category";
-import ProductPage from "./pages/Product";
-import NotFoundPage from "./pages/NotFound";
+import ProductDetailPage from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "products/:category",
-        element: <CategoryPage />,
+        path: ":category",
+        children: [
+          { index: true, element: <CategoryPage /> },
+          { path: ":productSlug", element: <ProductDetailPage /> },
+        ],
       },
-      {
-        path: "products/:category/:productId",
-        element: <ProductPage />,
-      },
+
       {
         path: "checkout",
         element: <Checkout />,
       },
       {
         path: "*",
-        element: <NotFoundPage />,
+        element: <ErrorPage />,
       },
     ],
   },

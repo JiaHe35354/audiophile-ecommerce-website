@@ -1,17 +1,22 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
+import DataContextProvider from "../context/DataContext";
+import ScrollToTop from "../components/shared/ScrollToTop";
 
 function RootLayout() {
   return (
     <>
-      <header>
+      <DataContextProvider>
+        <ScrollToTop />
+
         <Navbar />
-      </header>
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </DataContextProvider>
     </>
   );
 }

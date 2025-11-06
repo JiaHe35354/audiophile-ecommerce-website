@@ -1,15 +1,14 @@
 import Hero from "../components/home/Hero";
-import Products from "../components/home/Products";
+import ProductsDisplay from "../components/home/ProductsDisplay";
 import About from "../components/shared/About";
-import Categories from "../components/shared/Categories";
-import Footer from "../components/shared/Footer";
+import CategoryDisplay from "../components/shared/CategoryDisplay";
 
 function HomePage() {
   return (
     <>
       <Hero />
-      <Categories />
-      <Products />
+      <CategoryDisplay />
+      <ProductsDisplay />
       <About />
     </>
   );
