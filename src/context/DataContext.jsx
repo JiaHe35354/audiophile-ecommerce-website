@@ -41,6 +41,7 @@ function shoppingReducer(state, action) {
 
   if (action.type === "ADD_ITEM") {
     const updatedItems = [...state.cartItems];
+    console.log(state.cartItems);
 
     const existingCartItemIndex = updatedItems.findIndex(
       (cartItem) => cartItem.id === action.payload.id
@@ -59,14 +60,12 @@ function shoppingReducer(state, action) {
       );
       updatedItems.push({
         id: action.payload.id,
-        image: product.image.desktop,
+        image: product.cartImage,
         name: product.name,
         price: product.price,
         quantity: action.payload.quantity,
       });
     }
-
-    console.log(updatedItems);
 
     return {
       ...state,
