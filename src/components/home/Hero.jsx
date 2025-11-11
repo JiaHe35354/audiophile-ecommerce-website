@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import HeroImgDesk from "../../assets/home/desktop/image-hero.jpg";
-import HeroImgTablet from "../../assets/home/tablet/image-header.jpg";
-import HeroImgMobile from "../../assets/home/mobile/image-header.jpg";
+import HeroImgDesk from "/assets/home/desktop/image-hero.jpg";
+import HeroImgTablet from "/assets/home/tablet/image-header.jpg";
+import HeroImgMobile from "/assets/home/mobile/image-header.jpg";
 
 function Hero() {
   return (

@@ -8,7 +8,6 @@ import {
   zipRegex,
 } from "../../util/validation";
 
-import Cart from "../cart-modal/Cart";
 import PaymentDetails from "../checkout/PaymentDetails";
 import InputField from "./InputField";
 import SuccessModal from "../success-modal/SuccessModal";

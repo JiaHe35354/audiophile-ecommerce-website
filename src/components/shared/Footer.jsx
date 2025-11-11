@@ -1,7 +1,4 @@
-import BrandLogo from "../../assets/shared/desktop/logo.svg";
-import FacebookIcon from "../../assets/shared/desktop/icon-facebook.svg";
-import TwitterIcon from "../../assets/shared/desktop/icon-twitter.svg";
-import InstagramIcon from "../../assets/shared/desktop/icon-instagram.svg";
+import BrandLogo from "/assets/shared/desktop/logo.svg";
 import FooterNavLink from "./FooterNavLink";
 import { Link } from "react-router-dom";
 

@@ -1,6 +1,6 @@
-import AboutImgDesk from "../../assets/shared/desktop/image-best-gear.jpg";
-import AboutImgTablet from "../../assets/shared/tablet/image-best-gear.jpg";
-import AboutImgMobile from "../../assets/shared/mobile/image-best-gear.jpg";
+import AboutImgDesk from "/assets/shared/desktop/image-best-gear.jpg";
+import AboutImgTablet from "/assets/shared/tablet/image-best-gear.jpg";
+import AboutImgMobile from "/assets/shared/mobile/image-best-gear.jpg";
 
 function About() {
   return (

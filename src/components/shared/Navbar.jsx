@@ -2,8 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import MainNavLink from "./MainNavLink";
-import HamburgerLogo from "../../assets/shared/tablet/icon-hamburger.svg";
-import BrandLogo from "../../assets/shared/desktop/logo.svg";
+import HamburgerLogo from "/assets/shared/tablet/icon-hamburger.svg";
+import BrandLogo from "/assets/shared/desktop/logo.svg";
 import CartModal from "../cart-modal/CartModal";
 import { DataContext } from "../../context/DataContext";
 import CategoryDisplay from "./CategoryDisplay";

@@ -1,7 +1,7 @@
-import HeadphonesImg from "../../assets/shared/desktop/image-category-thumbnail-headphones.png";
-import SpeakersImg from "../../assets/shared/desktop/image-category-thumbnail-speakers.png";
-import EarphonesImg from "../../assets/shared/desktop/image-category-thumbnail-earphones.png";
-import ArrowRight from "../../assets/shared/desktop/icon-arrow-right.svg";
+import HeadphonesImg from "/assets/shared/desktop/image-category-thumbnail-headphones.png";
+import SpeakersImg from "/assets/shared/desktop/image-category-thumbnail-speakers.png";
+import EarphonesImg from "/assets/shared/desktop/image-category-thumbnail-earphones.png";
+import ArrowRight from "/assets/shared/desktop/icon-arrow-right.svg";
 import { Link } from "react-router-dom";
 
 const categories = [

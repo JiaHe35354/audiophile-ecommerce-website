@@ -1,16 +1,16 @@
-import CirclePattern from "../../assets/home/desktop/pattern-circles.svg";
+import CirclePattern from "/assets/home/desktop/pattern-circles.svg";
 
-import SpeakerZ9ImgDesk from "../../assets/home/desktop/image-speaker-zx9.png";
-import SpeakerZ9ImgTablet from "../../assets/home/tablet/image-speaker-zx9.png";
-import SpeakerZ9ImgMobile from "../../assets/home/mobile/image-speaker-zx9.png";
+import SpeakerZ9ImgDesk from "/assets/home/desktop/image-speaker-zx9.png";
+import SpeakerZ9ImgTablet from "/assets/home/tablet/image-speaker-zx9.png";
+import SpeakerZ9ImgMobile from "/assets/home/mobile/image-speaker-zx9.png";
 
-import SpeakerZ7ImgDesk from "../../assets/home/desktop/image-speaker-zx7.jpg";
-import SpeakerZ7Tablet from "../../assets/home/tablet/image-speaker-zx7.jpg";
-import SpeakerZ7ImgMobile from "../../assets/home/mobile/image-speaker-zx7.jpg";
+import SpeakerZ7ImgDesk from "/assets/home/desktop/image-speaker-zx7.jpg";
+import SpeakerZ7Tablet from "/assets/home/tablet/image-speaker-zx7.jpg";
+import SpeakerZ7ImgMobile from "/assets/home/mobile/image-speaker-zx7.jpg";
 
-import EarphonesYx1Desk from "../../assets/home/desktop/image-earphones-yx1.jpg";
-import EarphonesYx1Tablet from "../../assets/home/tablet/image-earphones-yx1.jpg";
-import EarphonesYx1Mobile from "../../assets/home/mobile/image-earphones-yx1.jpg";
+import EarphonesYx1Desk from "/assets/home/desktop/image-earphones-yx1.jpg";
+import EarphonesYx1Tablet from "/assets/home/tablet/image-earphones-yx1.jpg";
+import EarphonesYx1Mobile from "/assets/home/mobile/image-earphones-yx1.jpg";
 
 import { Link } from "react-router-dom";
 

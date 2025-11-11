@@ -9,7 +9,7 @@ import { createPortal } from "react-dom";
 import { DataContext } from "../../context/DataContext";
 import { handleFormatPrice, calculateTotalPrice } from "../../util/helper";
 
-import ConfirmIcon from "../../assets/checkout/icon-order-confirmation.svg";
+import ConfirmIcon from "/assets/checkout/icon-order-confirmation.svg";
 import SuccessItem from "./SuccessItem";
 import { useNavigate } from "react-router-dom";
 

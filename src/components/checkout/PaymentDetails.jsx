@@ -1,4 +1,4 @@
-import CashOnDeliveryIcon from "../../assets/checkout/icon-cash-on-delivery.svg";
+import CashOnDeliveryIcon from "/assets/checkout/icon-cash-on-delivery.svg";
 import InputField from "./InputField";
 
 function PaymentDetails({ formState, paymentMethod, onPaymentChange }) {
