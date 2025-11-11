@@ -3,7 +3,8 @@
 /* GENETAL */
 @theme {
   --breakpoint-tablet: 56.3125rem; /* = 901px */
-  --breakpoint-xs: 32.5625rem; /* = 521px */
+  --breakpoint-xs: 32.5rem; /* = 520px */
+  --breakpoint-xxs: 23.125rem; /* = 370px */
 }
 
 @layer base {
@@ -38,7 +39,7 @@
   }
 
   .centered-container {
-    @apply max-[900px]:w-[90%] tablet:w-[80%] mx-auto;
+    @apply max-[900px]:w-[90%] tablet:w-[80%] max-w-[1536px] mx-auto;
   }
 
   /* TYPOGRAPHY */
@@ -55,7 +56,7 @@
   }
 
   .product-heading-secondary {
-    @apply uppercase text-[3.2rem] font-bold mb-[3.2rem] tracking-[1.14px];
+    @apply uppercase text-[2.4rem] min-[730px]:text-[3.2rem] font-bold mb-[2.4rem] sm:mb-[3.2rem] tracking-[1.14px];
   }
 
   /* BUTTON */
@@ -98,6 +99,47 @@
     cursor-pointer hover:text-[var(--color-primary)] transition;
   }
 
+  /* MOBILE MENU */
+  .menu {
+    @apply fixed top-40 left-0 w-full z-500 bg-white text-black;
+  }
+
+  .overlay {
+    @apply fixed inset-0 top-40 bg-black/50 z-400;
+    transition: all 0.4s ease;
+  }
+
+  .menu.open {
+    animation: menu-open 0.4s ease forwards;
+    transform-origin: top;
+  }
+
+  @keyframes menu-open {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px) scaleY(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+  }
+
+  .menu.closing {
+    animation: menu-close 0.4s ease forwards;
+  }
+
+  @keyframes menu-close {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px) scaleY(0.95);
+    }
+  }
+
   /* MODAL */
   .modal {
     @apply rounded-xl shadow-xl;
@@ -114,13 +156,13 @@
   }
 
   .cart-modal {
-    @apply top-50 w-[37.7rem] p-[2.8rem] rounded-xl shadow-xl;
-    left: calc(50% + 40% - 37.7rem);
+    @apply top-50 left-1/2 transform max-[640px]:-translate-x-1/2 sm:left-[calc(95%-37.7rem)] tablet:left-[calc(90%-37.7rem)] w-[37.7rem] p-[2.8rem] rounded-xl shadow-xl;
     animation: fade-slide-in-from-top 0.3s ease-in-out;
   }
 
   .success-modal {
-    @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[64rem] max-w-[90%]  p-20 bg-white flex flex-col gap-10;
+    @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[64rem] max-w-[85%] sm:max-h-[80vh] p-12 sm:p-20 
+    bg-white flex flex-col gap-6 sm:gap-10;
     animation: fade-slide-in-from-top 0.3s ease-in-out;
   }
 
@@ -168,19 +210,19 @@
   }
 
   .control-group {
-    @apply mb-22;
+    @apply mb-14 sm:mb-22;
   }
 
   .control-row {
-    @apply flex gap-8;
+    @apply sm:flex gap-8;
   }
 
   .control {
-    @apply w-full mb-12;
+    @apply w-full mb-8 sm:mb-12;
   }
 
   .control-half {
-    @apply w-[calc(50%-1rem)];
+    @apply sm:w-[calc(50%-1rem)];
   }
 
   .radio-label {
@@ -239,7 +281,7 @@
 
   /* HERO SECTION */
   .hero-section {
-    @apply pt-40 w-[full] lg:w-[80%] mx-auto h-[100vh] text-[var(--text-light)] flex items-center 
+    @apply pt-40 w-full lg:w-[80%] h-[100vh] mx-auto text-[var(--text-light)] flex items-center 
     justify-center lg:justify-start;
   }
 
@@ -259,6 +301,12 @@
 
     .tablet-ml-auto {
       margin-left: auto;
+    }
+  }
+
+  @media (width: 900px) {
+    .centered-container {
+      @apply w-[90%];
     }
   }
 

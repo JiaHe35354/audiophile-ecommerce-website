@@ -10,11 +10,14 @@ function Footer() {
     <footer className="bg-[var(--bg-dark)] pt-30 pb-18 ">
       <div className="centered-container relative text-[var(--text-light)]">
         <div
-          className="absolute max-[520px]:-top-29.5 -top-30 left-1/2 xs:left-[0] transform max-[520px]:-translate-1/2 w-[10rem] 
-          h-[4px] bg-[var(--color-primary)]"
+          className="absolute max-[520px]:-top-29 -top-30 left-1/2 xs:left-[0] transform 
+          max-[520px]:-translate-1/2 w-[10rem] h-[5px] bg-[var(--color-primary)]"
         ></div>
 
-        <div className="max-[520px]:mb-24 mb-14 flex flex-col max-[520px]:gap-24 gap-16 tablet:gap-16 max-[520px]:items-center tablet:items-center tablet:flex-row tablet:justify-between">
+        <div
+          className="max-[520px]:mb-24 mb-14 flex flex-col max-[520px]:gap-24 gap-16 tablet:gap-16 
+          max-[520px]:items-center tablet:items-center tablet:flex-row tablet:justify-between"
+        >
           <Link to="/">
             <img src={BrandLogo} alt="brand logo" />
           </Link>
@@ -24,7 +27,7 @@ function Footer() {
         </div>
 
         <div className="max-[520px]:text-center grid grid-cols-2 max-[520px]:justify-items-center lg:gap-x-20">
-          <p className="max-[900px]:col-span-2 leading-[1.7] mb-22 table:mb-22 opacity-50 ">
+          <p className="max-[901px]:col-span-2 leading-[1.7] mb-22 table:mb-22 opacity-50 ">
             Audiophile is an all in one stop to fulfill your audio needs. We're
             a small team of music lovers and sound specialists who are devoted
             to helping you get the most out of personal audio. Come and visit
@@ -35,8 +38,8 @@ function Footer() {
           </p>
 
           <div
-            className="col-start-1 col-end-3 min-[521px]:col-start-2 min-[521px]:col-end-3 
-            tablet:row-start-1 tablet:row-end-2 min-[520px]:justify-self-end flex items-center gap-6"
+            className="col-start-1 col-end-3 xs:col-start-2 xs:col-end-3 
+            tablet:row-start-1 tablet:row-end-2 xs:justify-self-end flex items-center gap-6"
           >
             <a
               href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx"

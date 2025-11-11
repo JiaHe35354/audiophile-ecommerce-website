@@ -6,15 +6,17 @@ import HeroImgMobile from "../../assets/home/mobile/image-header.jpg";
 function Hero() {
   return (
     <section className="hero-section">
-      {/* <div className="py-16 flex flex-col items-start gap-[2rem] z-50 mr-[-30rem]"> */}
-      <div className="z-50 max-w-[32.8rem] text-center lg:text-left flex flex-col items-center lg:items-start gap-12">
+      <div
+        className="z-50 max-w-[37.9rem] text-center lg:text-left flex flex-col items-center lg:items-start 
+      gap-12"
+      >
         <p className="tracking-[1rem] uppercase text-[1.4rem] font-light opacity-50">
           New product
         </p>
         <h1 className="heading-primary">
           XX99 Mark II <span className="block">Headphones</span>
         </h1>
-        <p className="font-light leading-[1.8] opacity-75 tracking-[1px]">
+        <p className="font-light leading-[1.8] opacity-75 tracking-[1px] mb-4">
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
@@ -26,9 +28,8 @@ function Hero() {
         </Link>
       </div>
 
-      <div className="absolute inset-0 -z-10 ">
-        <picture>
-          {/* 1024px */}
+      <div className="absolute -z-10 top-0 left-0 w-full h-full ">
+        <picture className="block w-full h-full">
           <source srcSet={HeroImgDesk} media="(min-width: 64em)" />
           <source srcSet={HeroImgTablet} media="(min-width: 32.5em)" />
           <img
@@ -40,8 +41,6 @@ function Hero() {
       </div>
 
       <div className="absolute inset-0 bg-black/20 -z-1"></div>
-
-      {/* <div className="flex-shrink-0 w-full h-full"> */}
     </section>
   );
 }

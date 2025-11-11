@@ -55,16 +55,16 @@ function CategoryPage() {
               >
                 <picture>
                   <source
-                    srcset={product.categoryImage.desktop}
-                    media="(min-width: 901px)"
+                    srcSet={product.categoryImage.desktop}
+                    media="(min-width: 56.3125em)"
                   />
                   <source
-                    srcset={product.categoryImage.tablet}
+                    srcSet={product.categoryImage.tablet}
                     media="(min-width: 31.25em)"
                   />
                   <img
                     src={product.categoryImage.mobile}
-                    alt=""
+                    alt={product.name}
                     className="w-full h-full"
                   />
                 </picture>
@@ -83,7 +83,7 @@ function CategoryPage() {
                 <h2 className="heading-secondary mb-[3.5rem] ">
                   {product.name}
                 </h2>
-                <p className="opacity-60 leading-[1.7] mb-[3.8rem]">
+                <p className="opacity-50 leading-[1.7] mb-[3.8rem]">
                   {product.description}
                 </p>
                 <Link

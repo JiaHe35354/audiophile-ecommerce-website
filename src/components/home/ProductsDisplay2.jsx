@@ -19,34 +19,33 @@ function ProductsDisplay() {
     <section className="mb-42 tablet:mb-50 lg:mb-60 products-display-section">
       <div className="centered-container flex flex-col gap-10 lg:gap-18">
         <div
-          className="relative h-[60rem] sm:h-[72rem] lg:h-[56rem] py-20 bg-[var(--color-primary)] 
-          rounded-2xl grid lg:grid-cols-2 lg:items-center justify-end max-[1024px]:grid-rows-2 
-          max-[1024px]:justify-items-center max-[1024px]:justify-center gap-10 overflow-hidden"
+          className="relative lg:h-[56rem] pb-20 lg:pb-0 bg-[var(--color-primary)] rounded-2xl 
+          overflow-hidden flex lg:grid lg:grid-cols-2 flex-col items-center justify-start"
         >
-          <img
-            src={CirclePattern}
-            alt="Background image"
-            className="absolute -top-4 xs:-top-18 sm:-top-40 lg:scale-[1] lg:-left-50 lg:top-10 scale-[1.7] xs:scale-[1.5]"
-          />
-
-          <div className="scale-[0.7] xs:scale-[0.9] lg:scale-[0.45] lg:absolute lg:-left-30 xl:-left-15 lg:-top-38">
-            <picture>
-              <source srcSet={SpeakerZ9ImgDesk} media="(min-width: 1024px)" />
-              <source srcSet={SpeakerZ9ImgTablet} media="(min-width: 768px)" />
-              <img
-                src={SpeakerZ9ImgMobile}
-                loading="lazy"
-                alt="Zx9 speaker image"
-                className="w-full h-full object-cover"
-              />
-            </picture>
+          <div className="">
+            <img
+              src={CirclePattern}
+              alt="Background image"
+              className="absolute top-65 lg:top-170 left-1/2 lg:left-110 transform -translate-1/2 scale-[1.75] sm:scale-[1.4] lg:scale-[1]"
+            />
+            <div className="w-[172px] h-[207px] -mt-10  lg:absolute lg:-top-27 lg:-left-40 ">
+              <picture className="block w-full h-full">
+                <source srcSet={SpeakerZ9ImgDesk} media="(min-width: 1024px)" />
+                <source
+                  srcSet={SpeakerZ9ImgTablet}
+                  media="(min-width: 768px)"
+                />
+                <img
+                  src={SpeakerZ9ImgMobile}
+                  loading="lazy"
+                  alt="Zx9 speaker image"
+                  className="w-full h-full object-cover"
+                />
+              </picture>
+            </div>
           </div>
 
-          <div
-            className="z-50 sm:w-[34.9rem] lg:mt-30 lg:col-start-2 lg:justify-self-end xl:justify-self-center 
-            lg:w-[35rem] px-10 text-[var(--text-light)] text-center lg:text-left flex flex-col items-center 
-            lg:items-start gap-10"
-          >
+          <div className="lg:justify-self-end xl:justify-self-center xs:w-[35rem] px-10 lg:pt-40 -mt-15 text-[var(--text-light)] text-center lg:text-left flex flex-col items-center lg:items-start gap-10">
             <h1 className="heading-primary">
               ZX9 <span className="block">speaker</span>
             </h1>

@@ -14,7 +14,7 @@ function SuccessItem({ item }) {
           className={"font-bold w-full flex justify-between gap-[2rem]"}
         >
           <div>
-            <span className="block uppercase text-[1.5rem]">
+            <span className="block uppercase">
               {item.name.split(" ").slice(0, -1).join(" ")}
             </span>
             <span className="block opacity-50 text-[1.4rem]">

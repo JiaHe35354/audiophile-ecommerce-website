@@ -44,17 +44,17 @@ const SuccessModal = forwardRef(function Modal({}, ref) {
       <img
         src={ConfirmIcon}
         alt="Order confirmation icon"
-        className="self-start"
+        className="self-start mb-5"
       />
-      <h1 className="text-[3.2rem] font-bold uppercase tracking-[1.14px] ">
-        Thank you <span className="block">for your order</span>
+      <h1 className="text-[2.4rem] sm:text-[3.2rem] font-bold uppercase tracking-[0.86px] sm:tracking-[1.14px] leading-[1.2] ">
+        Thank you <span className="sm:block">for your order</span>
       </h1>
       <p className="opacity-50 font-medium mb-4">
         You will receive an email confirmation shortly
       </p>
-      <div className="w-full grid grid-cols-[60fr_45fr] rounded-2xl overflow-hidden">
-        <div className="bg-[var(--bg-light)] px-10 py-8 flex flex-col items-center">
-          <ul className="w-full pb-4 border-b border-[#979797]">
+      <div className="w-full sm:grid sm:grid-cols-[60fr_45fr] rounded-2xl overflow-x-hidden overflow-y-hidden max-[640px]:overflow-y-auto">
+        <div className="bg-[var(--bg-light)] px-10 py-8 flex flex-col items-center overflow-y-auto">
+          <ul className="w-full pb-4 border-b border-[#979797] ">
             {(showAll ? cartItems : cartItems.slice(0, 1)).map((item) => (
               <SuccessItem key={item.id} item={item} />
             ))}
@@ -79,7 +79,7 @@ const SuccessModal = forwardRef(function Modal({}, ref) {
           )}
         </div>
 
-        <div className="bg-black py-18 px-18 flex items-end">
+        <div className="bg-black p-9 sm:py-18 sm:px-18 flex items-end">
           <p className="text-white">
             <span className="block opacity-50 uppercase mb-4">Grand total</span>
             <span className="text-[1.8rem]">

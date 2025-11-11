@@ -1,14 +1,21 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import MainNavLink from "./MainNavLink";
 import HamburgerLogo from "../../assets/shared/tablet/icon-hamburger.svg";
 import BrandLogo from "../../assets/shared/desktop/logo.svg";
 import CartModal from "../cart-modal/CartModal";
 import { DataContext } from "../../context/DataContext";
+import CategoryDisplay from "./CategoryDisplay";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const location = useLocation();
+
   const modal = useRef();
   const navigate = useNavigate();
   const { cartItems } = useContext(DataContext);
@@ -41,6 +48,38 @@ function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > 900) {
+        setMenuOpen(false);
+        setIsClosing(false);
+      }
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
+  useEffect(() => {
+    setMenuOpen(false);
+    setIsClosing(false);
+  }, [location.pathname]);
+
+  function toggleMenu() {
+    if (menuOpen) {
+      // start closing animation
+      setIsClosing(true);
+
+      // remove menu after animation ends
+      setTimeout(() => {
+        setMenuOpen(false);
+        setIsClosing(false);
+      }, 400); // match your CSS animation duration
+    } else {
+      setMenuOpen(true);
+    }
+  }
+
   return (
     <>
       <CartModal
@@ -51,11 +90,35 @@ function Navbar() {
       <header>
         <nav
           className={`fixed top-0 left-0 w-full z-1000 transition-all duration-300 ${
-            scrolled && "opacity-80"
+            scrolled && "opacity-97"
           } bg-[var(--bg-dark)] text-[var(--text-light)] flex justify-center`}
         >
+          {(menuOpen || isClosing) && (
+            <div className="tablet:hidden">
+              <div
+                className={`overlay 
+                 ${
+                   menuOpen && !isClosing
+                     ? "opacity-100 "
+                     : "opacity-0 pointer-events-none"
+                 } `}
+                onClick={toggleMenu}
+              ></div>
+              <div
+                className={`menu ${
+                  menuOpen && !isClosing ? "open" : "closing"
+                }`}
+              >
+                <CategoryDisplay />
+              </div>
+            </div>
+          )}
+
           <div className="nav-container centered-container">
-            <button className="min-[901px]:hidden tablet-mr-16 cursor-pointer">
+            <button
+              className="min-[901px]:hidden tablet-mr-16 cursor-pointer"
+              onClick={toggleMenu}
+            >
               <img src={HamburgerLogo} alt="" />
             </button>
             <Link to="/">

@@ -5,14 +5,14 @@ function PaymentDetails({ formState, paymentMethod, onPaymentChange }) {
   return (
     <>
       <p className="description">Payment details</p>
-      <div className="flex gap-8 mb-12">
+      <div className="sm:flex gap-8 mb-12">
         <label
           htmlFor="payment-method"
-          className="w-full text-[1.2rem] font-bold -tracking-[0.21px]"
+          className="w-full text-[1.2rem] font-bold -tracking-[0.21px] "
         >
           Payment Method
         </label>
-        <div className="w-full flex flex-col gap-6">
+        <div className="w-full flex flex-col gap-6 mt-6">
           <label htmlFor="e-money" className="radio-label ">
             <input
               className="radio-input"

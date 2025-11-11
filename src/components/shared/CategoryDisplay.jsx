@@ -14,7 +14,7 @@ function CategoryDisplay() {
   return (
     <section className="mt-16 mb-18 sm:mt-32 tablet:mt-68 tablet:mb-34 py-28 category-display-section">
       <div
-        className="centered-container  flex flex-col gap-[8rem] sm:grid 
+        className="centered-container flex flex-col gap-[8rem] sm:grid 
         sm:grid-cols-3 sm:gap-[1rem] tablet:gap-[3rem]"
       >
         {categories.map((cate) => (

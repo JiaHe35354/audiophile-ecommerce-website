@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 function NavLink() {
   return (
     <ul
-      className="hidden min-[901px]:flex gap-[4rem] tracking-[2px] text-[1.1rem] lg:text-[1.3rem] font-semibold list-none [&_li]:hover:text-[var(--color-primary)] 
-         [&_li]:transition-colors [&_li]:duration-200 [&_li]:ease-in-out"
+      className="hidden tablet:flex gap-[4rem] tracking-[2px] text-[1.1rem] lg:text-[1.3rem] font-semibold 
+      list-none [&_li]:hover:text-[var(--color-primary)] [&_li]:transition-colors [&_li]:duration-200 
+      [&_li]:ease-in-out"
     >
       <li>
         <Link to="/">HOME</Link>

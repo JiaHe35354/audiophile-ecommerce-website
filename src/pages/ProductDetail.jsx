@@ -7,7 +7,6 @@ import CategoryDisplay from "../components/shared/CategoryDisplay";
 import ProductInfo from "../components/product-details/ProductInfo";
 import Gallery from "../components/product-details/Gallery";
 import RelatedProduct from "../components/product-details/RelatedProduct";
-import GoBack from "../components/shared/GoBack";
 
 function ProductDetailPage() {
   const { productSlug } = useParams();
@@ -32,9 +31,15 @@ function ProductDetailPage() {
   }
 
   return (
-    <section className="product-details pt-40">
-      <div className=" relative w-[80%] mx-auto mb-60 flex flex-col gap-50">
-        <GoBack top="30" />
+    <section className="product-details pt-10 lg:pt-40">
+      <div className=" relative centered-container mb-40 sm:mb-60 flex flex-col gap-35 sm:gap-50">
+        <Link
+          to="../"
+          className={`absolute top-40 lg:top-30 opacity-50 hover:text-[var(--color-primary)] transition-colors duration-200 ease-in-out`}
+        >
+          Go back
+        </Link>
+
         <ProductInfo product={product} />
         <Gallery product={product} />
         <RelatedProduct product={product} />

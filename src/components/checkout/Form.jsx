@@ -14,6 +14,7 @@ import InputField from "./InputField";
 import SuccessModal from "../success-modal/SuccessModal";
 import { DataContext } from "../../context/DataContext";
 import { useNavigate } from "react-router-dom";
+import SummaryCart from "./SummaryCart";
 
 function checkoutAction(prevFormState, formData) {
   const name = formData.get("name");
@@ -96,12 +97,12 @@ function Form() {
       <form
         action={formAction}
         noValidate
-        className=" grid grid-cols-[7fr_3fr] items-start gap-[3rem]"
+        className=" lg:grid grid-cols-[7fr_3fr] items-start gap-12 lg:gap-6 xl:gap-12"
       >
         <input type="hidden" name="payment-method" value={paymentMethod} />
 
-        <div className=" bg-white p-20 rounded-2xl">
-          <h1 className="uppercase text-[3.2rem] font-bold tracking-[1.14px] mb-18">
+        <div className="bg-white p-10 lg:p-20 max-[1024px]:mb-12 rounded-2xl">
+          <h1 className="uppercase text-[2.8rem] sm:text-[3.2rem] font-bold tracking-[1.14px] mb-16 sm:mb-18">
             checkout
           </h1>
           <p className="description">Billing details</p>
@@ -142,7 +143,7 @@ function Form() {
           <div className="control-group">
             <div className="control">
               <InputField
-                label="Address"
+                label="Your Address"
                 name="address"
                 placeholder="1137 Williams Avenue"
                 formState={formState}
@@ -184,11 +185,11 @@ function Form() {
           />
         </div>
 
-        <div className=" bg-white p-[2.8rem] rounded-2xl flex flex-col">
+        <div className="bg-white p-[2.8rem] rounded-2xl flex flex-col">
           <h2 className="uppercase text-[1.8rem] font-bold tracking-wider mb-[3rem]">
             summary
           </h2>
-          <Cart />
+          <SummaryCart />
 
           <button className="btn btn-primary">
             {paymentMethod === "e-money" ? "continue & pay" : " continue"}
