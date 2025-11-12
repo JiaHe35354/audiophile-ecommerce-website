@@ -15,10 +15,10 @@ function Footer() {
           className="max-[520px]:mb-24 mb-14 flex flex-col max-[520px]:gap-24 gap-16 tablet:gap-16 
           max-[520px]:items-center tablet:items-center tablet:flex-row tablet:justify-between"
         >
-          <Link to="/">
+          <Link to="/" aria-label="Go to home page">
             <img src={BrandLogo} alt="brand logo" />
           </Link>
-          <nav className="footer-nav list-none">
+          <nav className="footer-nav list-none" aria-label="Footer links">
             <FooterNavLink />
           </nav>
         </div>
@@ -42,6 +42,7 @@ function Footer() {
               href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Go to Facebook"
             >
               <svg
                 width="24"
@@ -59,6 +60,7 @@ function Footer() {
               href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Go to Twitter"
             >
               <svg
                 width="24"
@@ -76,6 +78,7 @@ function Footer() {
               href="https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Go to Instagram"
             >
               <svg
                 width="24"

@@ -10,7 +10,11 @@ function Cart() {
 
   return (
     <div>
-      {cartItems.length === 0 && <p className="mb-[3rem]">No items in cart!</p>}
+      {cartItems.length === 0 && (
+        <p className="mb-[3rem]" aria-live="polite">
+          No items in cart!
+        </p>
+      )}
 
       {cartItems.length > 0 && (
         <>

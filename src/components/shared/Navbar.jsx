@@ -89,6 +89,7 @@ function Navbar() {
       />
       <header>
         <nav
+          aria-label="Main navigation"
           className={`fixed top-0 left-0 w-full z-1000 transition-all duration-300 ${
             scrolled && "opacity-97"
           } bg-[var(--bg-dark)] text-[var(--text-light)] flex justify-center`}
@@ -119,9 +120,9 @@ function Navbar() {
               className="min-[901px]:hidden tablet-mr-16 cursor-pointer"
               onClick={toggleMenu}
             >
-              <img src={HamburgerLogo} alt="" />
+              <img src={HamburgerLogo} alt="" aria-label="Open main menu" />
             </button>
-            <Link to="/">
+            <Link to="/" aria-label="Go to home page">
               <img src={BrandLogo} alt="A brand logo" />
             </Link>
 
@@ -129,6 +130,7 @@ function Navbar() {
 
             <button
               className="relative cursor-pointer tablet-ml-auto"
+              aria-label="Open shopping cart"
               onClick={handleOpenCart}
             >
               <svg
@@ -143,7 +145,10 @@ function Navbar() {
                 />
               </svg>
               {cartQty > 0 && (
-                <div className="absolute -top-6 -right-6 bg-[var(--color-primary)] text-[1.3rem] font-semibold h-8 w-8 rounded-full flex justify-center items-center">
+                <div
+                  aria-live="polite"
+                  className="absolute -top-6 -right-6 bg-[var(--color-primary)] text-[1.3rem] font-semibold h-8 w-8 rounded-full flex justify-center items-center"
+                >
                   {cartQty}
                 </div>
               )}

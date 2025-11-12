@@ -43,24 +43,26 @@ Users should be able to:
 
 ### My thought
 
-This project requires many skills, and I choose React with Tailwind CSS to do it. The reason for that is the project contains a lot of parts and it needs many dynamic content. React can solve the problem that JavaScript can't do, e.g., with JS there will be much more code and not scalable. React can split the whole code into small components, and integrate JS code into HTML, it's easy to maintain.
+This project required a wide range of skills, and I decided to build it with **React** and **Tailwind CSS**. I chose React because the project includes many different parts and dynamic content. React helps manage complexity by splitting the code into reusable components and integrating JavaScript logic directly within the UI. Compared to plain JavaScript, React makes the codebase cleaner, more scalable, and much easier to maintain.
 
-I fetch the data from DataContext.jsx. In this component, I use a reducer function 'shoppingReducer' that write the logic of all the actions inside a function. And then dispatches them inside DataContextProvider function, this function provide all the data that need other components. Just putting all the data and function inside one component, and for components that need these data, I use useContext to get the data. This is cleaner.
+For data management, I used a **DataContext** component. Inside it, I implemented a reducer function called shoppingReducer, which contains all the logic for handling actions. The reducer is used within the DataContextProvider function, which provides all the necessary data and methods to other components. Any component that needs this data can simply access it using the useContext hook. This approach keeps the data flow organized and the structure of the project cleaner.
 
-On the other hand, Tailwind CSS can make the style with less code so that it's simpler.
+On the styling side, **Tailwind CSS** helps me write styles with minimal code. It simplifies the design process while keeping everything consistent and responsive.
 
-In this way, I think the project is more maintainable and scalable.
+Overall, this setup makes the project much more maintainable, scalable, and easier to extend in the future.
 
 ### Built with
 
 - Mobile-first workflow
-- Tailwind CSS
-- [React](https://reactjs.org/) - JS library
-- [React Router](https://reactrouter.com/) - React routing library
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces
+- [React Router](https://reactrouter.com/) - Routing library for React
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 
 ### What I learned
 
-Throughout this project, I learned how to do a medium project containing diferrent routes with React and React Router. Firstly, I needed to define the path and the page components. With these, then I could add components to each page. This is a better way of starting the project. Below is the snippet of the path defining:
+Throughout this project, I learned how to build a medium-scale React application that includes multiple routes using **React Router**.
+
+1. First, I defined the main paths and their corresponding page components. Once the routes were set up, I was able to organize the structure of each page by adding smaller components. This approach made the project easier to manage and more scalable. Here’s a simplified example of the route setup:
 
 ```jsx
 const router = createBrowserRouter([
@@ -91,7 +93,7 @@ const router = createBrowserRouter([
 ]);
 ```
 
-For the dynamic data, for example, get the category data, I use useParams to get the dynamic category name and display the category page. And also for getting product. For example, in Category.jsx, using useParams to get the dynamic category in the URL, then filter the products of same category:
+2. For dynamic pages, I used the useParams hook to get category or product names directly from the URL. This allowed me to filter and display the correct data dynamically. For example, in Category.jsx, I used the following logic:
 
 ```jsx
 const { category } = useParams();
@@ -103,7 +105,7 @@ const filteredProducts = products
   .reverse();
 ```
 
-When add the product to the cart, the logic isn't easy to me. Firstly, the original state can't be changed, so I need to copy it with spread syntax. Then I need to find if the item is existing in the cart, if it exists, I just update the cart item's quantity; if not, I add the new item to the cart and set it's data shape. This is the code for "ADD_ITEM":
+3. When adding products to the cart, I found it a bit challenging at first because I had to handle immutable state updates correctly. I used the spread syntax to copy the state, checked if the product already existed in the cart, and then either updated the quantity or added a new item. Here’s part of my logic for the "ADD_ITEM" action:
 
 ```jsx
 if (action.type === "ADD_ITEM") {
@@ -135,7 +137,7 @@ console.log(state.cartItems);
     }
 ```
 
-Validating the form is another difficult issue, I use the form action function checkoutFunction. This function can handle the error when submit the form. If there's some error, the input fields can be persisted of the data entered so that users won't fill all the inputs from the start, and below every the correspond input the error message appears.
+4. Another challenging but valuable part was **form validation**. I built a custom form action function called checkoutAction that handles validation and displays clear error messages. If there are errors, the entered data remains in the form so users don’t have to retype everything. Each field shows its specific error message below it.
 
 ```js
 function checkoutAction(prevFormState, formData) {
@@ -190,25 +192,27 @@ function checkoutAction(prevFormState, formData) {
 }
 ```
 
+Overall, this project taught me how to manage routing, dynamic data, reducer logic, and form validation — all essential skills for building real-world React applications.
+
 ### What I added to this project
 
-1. I added a small detail to the cart logo on navbar. When there are products in cart, it will show the number next to the cart logo. This will tell the user: "You have something in the cart". If the cart is empty and the user click it, it will show 'No items in cart!' what is more user friendly.
+1. I added a small improvement to the cart icon in the navigation bar. When there are products in the cart, a number appears next to the icon to indicate how many items the user has added. If the cart is empty and the user clicks it, a message saying “No items in cart!” appears. This makes the user experience clearer and more intuitive.
 
-2. Another user friendly thing I added to this project is error handling. When the user try to type some non-existing category or product in the URL, the page will show the error or the page doesn't exist.
+2. I also implemented error handling to make the app more user-friendly. If a user tries to access a non-existent category or product by typing it in the URL, a custom error page will appear instead of a blank or broken screen, letting the user know that the page doesn’t exist.
 
 ### Continued development
 
-This time, I wanted to practice useContext and useReducer for the data. In future projects, I want to do with Redux so that I can handle these methods to get and store data.
+In this project, I practiced using useContext and useReducer to manage data and state. In future projects, I’d like to work with Redux to deepen my understanding of state management and learn how to handle data flow on a larger scale.
 
-Also I want to do more practice that displays dynamic content, it's an important part for the majority of real world projects.
+I also want to keep practicing building dynamic content, since it’s an essential part of most real-world applications.
 
 ### Useful resources
 
-- [Pure CSS Custom Styled Radio Buttons](https://moderncss.dev/pure-css-custom-styled-radio-buttons/) - This helped me for styling radio button on checkout page.
+- [Pure CSS Custom Styled Radio Buttons](https://moderncss.dev/pure-css-custom-styled-radio-buttons/) - This article helped me style the radio buttons on the checkout page using only CSS, without relying on JavaScript.
 
-- [Scaling Up with Reducer and Context](https://react.dev/learn/scaling-up-with-reducer-and-context) - This helped me for storing data in just one component and provide it to whichever component that needs the data.
+- [Scaling Up with Reducer and Context](https://react.dev/learn/scaling-up-with-reducer-and-context) - This guide helped me understand how to manage state efficiently by combining useReducer and useContext in React.
 
-- [Dynamic segment in Routing](https://reactrouter.com/start/declarative/routing#dynamic-segments) - This helped me to get the data dynamically.
+- [Dynamic segment in Routing](https://reactrouter.com/start/declarative/routing#dynamic-segments) - This resource helped me implement dynamic routes for categories and products using React Router.
 
 ## Author
 
