@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [My solution]()
+- Solution URL: [My solution](https://www.frontendmentor.io/solutions/audiophile-e-commerce-website-with-react-and-tailwind-css-P54a2O14li)
 - Live Site URL: [Live Site URL](https://audiophile-ecommerce-website-jiah.netlify.app/)
 
 ## My process
