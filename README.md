@@ -1,22 +1,20 @@
 # Frontend Mentor - Audiophile e-commerce website solution
 
-This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is my solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
+  - [My thought](#my-thought)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
+  - [What I added to this project](#what-i-added-to-this-project)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -36,87 +34,182 @@ Users should be able to:
 - See an order confirmation modal after checking out with an order summary
 - **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
 
-### Screenshot
-
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [My solution]()
 - Live Site URL: [Live Site URL](https://audiophile-ecommerce-website-jiah.netlify.app/)
 
 ## My process
 
+### My thought
+
+This project requires many skills, and I choose React with Tailwind CSS to do it. The reason for that is the project contains a lot of parts and it needs many dynamic content. React can solve the problem that JavaScript can't do, e.g., with JS there will be much more code and not scalable. React can split the whole code into small components, and integrate JS code into HTML, it's easy to maintain.
+
+I fetch the data from DataContext.jsx. In this component, I use a reducer function 'shoppingReducer' that write the logic of all the actions inside a function. And then dispatches them inside DataContextProvider function, this function provide all the data that need other components. Just putting all the data and function inside one component, and for components that need these data, I use useContext to get the data. This is cleaner.
+
+On the other hand, Tailwind CSS can make the style with less code so that it's simpler.
+
+In this way, I think the project is more maintainable and scalable.
+
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
 - Mobile-first workflow
+- Tailwind CSS
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [React Router](https://reactrouter.com/) - React routing library
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Throughout this project, I learned how to do a medium project containing diferrent routes with React and React Router. Firstly, I needed to define the path and the page components. With these, then I could add components to each page. This is a better way of starting the project. Below is the snippet of the path defining:
 
-To see how you can add code snippets, see below:
+```jsx
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <HomePage /> },
+      {
+        path: ":category",
+        children: [
+          { index: true, element: <CategoryPage /> },
+          { path: ":productSlug", element: <ProductDetailPage /> },
+        ],
+      },
 
-```html
-<h1>Some HTML code I'm proud of</h1>
+      {
+        path: "checkout",
+        element: <Checkout />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
+    ],
+  },
+]);
 ```
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
+For the dynamic data, for example, get the category data, I use useParams to get the dynamic category name and display the category page. And also for getting product. For example, in Category.jsx, using useParams to get the dynamic category in the URL, then filter the products of same category:
+
+```jsx
+const { category } = useParams();
+
+const filteredProducts = products
+  .filter(
+    (product) => product.category.toLowerCase() === category.toLowerCase()
+  )
+  .reverse();
+```
+
+When add the product to the cart, the logic isn't easy to me. Firstly, the original state can't be changed, so I need to copy it with spread syntax. Then I need to find if the item is existing in the cart, if it exists, I just update the cart item's quantity; if not, I add the new item to the cart and set it's data shape. This is the code for "ADD_ITEM":
+
+```jsx
+if (action.type === "ADD_ITEM") {
+const updatedItems = [...state.cartItems];
+console.log(state.cartItems);
+
+    const existingCartItemIndex = updatedItems.findIndex(
+      (cartItem) => cartItem.id === action.payload.id
+    );
+    const existingCartItem = updatedItems[existingCartItemIndex];
+
+    if (existingCartItem) {
+      const updatedItem = {
+        ...existingCartItem,
+        quantity: existingCartItem.quantity + action.payload.quantity,
+      };
+      updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+      const product = state.products.find(
+        (product) => product.id === action.payload.id
+      );
+      updatedItems.push({
+        id: action.payload.id,
+        image: product.cartImage,
+        name: product.name,
+        price: product.price,
+        quantity: action.payload.quantity,
+      });
+    }
+```
+
+Validating the form is another difficult issue, I use the form action function checkoutFunction. This function can handle the error when submit the form. If there's some error, the input fields can be persisted of the data entered so that users won't fill all the inputs from the start, and below every the correspond input the error message appears.
+
+```js
+function checkoutAction(prevFormState, formData) {
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const phoneNumber = formData.get("phone-number");
+  const address = formData.get("address");
+  const zipCode = formData.get("zip-code");
+  const city = formData.get("city");
+  const country = formData.get("country");
+  const paymentMethod = formData.get("payment-method");
+  const eMoneyNumber = formData.get("e-money-number");
+  const eMoneyPin = formData.get("e-money-pin");
+
+  let errors = {};
+
+  if (!isNotEmpty(name)) errors.name = "This field is required.";
+  if (!isNotEmpty(address)) errors.address = "This field is required.";
+  if (!isNotEmpty(city)) errors.city = "This field is required.";
+  if (!isNotEmpty(country)) errors.country = "This field is required.";
+  if (!isEmail(email)) errors.email = "Invalid email.";
+  if (!phoneRegex.test(phoneNumber))
+    errors.phoneNumber = "Invalid phone number.";
+  if (!zipRegex.test(zipCode)) errors.zipCode = "Invalid ZIP code.";
+
+  if (paymentMethod === "e-money") {
+    if (!eMoneyNumberRegex.test(eMoneyNumber))
+      errors.eMoneyNumber = "Invalid e-Money number.";
+
+    if (!pinRegex.test(eMoneyPin))
+      errors.eMoneyPin = "PIN must be exactly 4 digits.";
+  }
+
+  const hasError = Object.keys(errors).length > 0;
+
+  return {
+    errors,
+    enteredValues: {
+      name,
+      email,
+      phoneNumber,
+      address,
+      zipCode,
+      city,
+      country,
+      paymentMethod,
+      eMoneyNumber,
+      eMoneyPin,
+    },
+    submitted: !hasError,
+  };
 }
 ```
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
+### What I added to this project
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+1. I added a small detail to the cart logo on navbar. When there are products in cart, it will show the number next to the cart logo. This will tell the user: "You have something in the cart". If the cart is empty and the user click it, it will show 'No items in cart!' what is more user friendly.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+2. Another user friendly thing I added to this project is error handling. When the user try to type some non-existing category or product in the URL, the page will show the error or the page doesn't exist.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+This time, I wanted to practice useContext and useReducer for the data. In future projects, I want to do with Redux so that I can handle these methods to get and store data.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+Also I want to do more practice that displays dynamic content, it's an important part for the majority of real world projects.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Pure CSS Custom Styled Radio Buttons](https://moderncss.dev/pure-css-custom-styled-radio-buttons/) - This helped me for styling radio button on checkout page.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Scaling Up with Reducer and Context](https://react.dev/learn/scaling-up-with-reducer-and-context) - This helped me for storing data in just one component and provide it to whichever component that needs the data.
+
+- [Dynamic segment in Routing](https://reactrouter.com/start/declarative/routing#dynamic-segments) - This helped me to get the data dynamically.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Frontend Mentor - [@JiaHe35354](https://www.frontendmentor.io/profile/JiaHe35354)
