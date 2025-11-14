@@ -21,7 +21,7 @@ const CartModal = forwardRef(function Modal({ title, actions }, ref) {
   return createPortal(
     <dialog
       ref={dialog}
-      className="modal cart-modal"
+      className="modal cart-modal overflow-hidden"
       onClick={(event) => handleBackdropClick(event, dialog)}
     >
       <div className="mb-[3rem] flex items-center justify-between">
@@ -38,7 +38,9 @@ const CartModal = forwardRef(function Modal({ title, actions }, ref) {
           </button>
         )}
       </div>
-      <Cart />
+      <div className="overflow-y-auto max-h-[56vh] pr-2">
+        <Cart />
+      </div>
       <form method="dialog">{actions}</form>
     </dialog>,
     document.getElementById("modal")

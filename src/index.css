@@ -156,7 +156,7 @@
   }
 
   .cart-modal {
-    @apply top-50 left-1/2 transform max-[640px]:-translate-x-1/2 sm:left-[calc(95%-37.7rem)] tablet:left-[calc(90%-37.7rem)] w-[37.7rem] p-[2.8rem] rounded-xl shadow-xl;
+    @apply top-50 left-1/2 transform max-[640px]:-translate-x-1/2 sm:left-[calc(95%-37.7rem)] tablet:left-[calc(90%-37.7rem)] w-[37.7rem] max-h-[80vh] p-[2.8rem]  rounded-xl shadow-xl;
     animation: fade-slide-in-from-top 0.3s ease-in-out;
   }
 

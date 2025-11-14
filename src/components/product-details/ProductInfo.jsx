@@ -1,9 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../context/DataContext";
 
 function ProductInfo({ product }) {
   const { addItemToCart } = useContext(DataContext);
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    setQuantity(1);
+  }, [product.id]);
 
   function handleDecrease() {
     setQuantity((prevQty) => Math.max(1, prevQty - 1));
